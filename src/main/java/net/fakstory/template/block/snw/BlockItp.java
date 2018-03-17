@@ -25,6 +25,7 @@ public class BlockItp extends BlockTileEntity<BlockItpLogic> {
 
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		System.out.println("onBlockActivated");
 		if (!world.isRemote) {
 			BlockItpLogic tile = getTileEntity(world, pos);
 			if (side == EnumFacing.DOWN) {
@@ -48,6 +49,7 @@ public class BlockItp extends BlockTileEntity<BlockItpLogic> {
 	public BlockItpLogic createTileEntity(World world, IBlockState state) {
 		//System.out.println("FROM SERVER: createTileEntity");
 		//logger.info("ItpBlock >> createTileEntity");
+		System.out.println("createTileEntity");
 		return new BlockItpLogic();
 	}
 

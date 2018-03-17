@@ -26,6 +26,7 @@ import net.fakstory.template.network.PacketUpdatePedestal;
 import net.fakstory.template.proxy.CommonProxy;
 import net.fakstory.template.recipe.ModRecipes;
 import net.fakstory.template.world.ModWorldGen;
+import net.fakstory.externalNetwork.TcpClient;
 
 @Mod(modid = TemplateMod.modId, name = TemplateMod.name, version = TemplateMod.version)
 public class TemplateMod {
@@ -45,6 +46,7 @@ public class TemplateMod {
 	public static final ItemArmor.ArmorMaterial copperArmorMaterial = EnumHelper.addArmorMaterial("COPPER", modId + ":copper", 15, new int[]{2, 5, 6, 2}, 9, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F);
 
 	public static SimpleNetworkWrapper network;
+	public static TcpClient tcpClient = new TcpClient();
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -55,6 +57,8 @@ public class TemplateMod {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(modId);
 		network.registerMessage(new PacketUpdatePedestal.Handler(), PacketUpdatePedestal.class, 0, Side.CLIENT);
 		network.registerMessage(new PacketRequestUpdatePedestal.Handler(), PacketRequestUpdatePedestal.class, 1, Side.SERVER);
+		tcpClient = new TcpClient();
+		tcpClient.send("tata");
 	}
 
 	@Mod.EventHandler
