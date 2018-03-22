@@ -51,7 +51,9 @@ public class BlockItp extends BlockTileEntity<BlockItpLogic> {
 	@Nullable
 	@Override
 	public BlockItpLogic createTileEntity(World world, IBlockState state) {
-		this.tcpClient.send("Not Created yet!");
+		this.tcpClient.init("test");
+		this.tcpClient.send("tcpClient is initialized");
+		this.tcpClient.test("tcpClient is initialized");
 		System.out.println("createTileEntity");
 		return new BlockItpLogic();
 	}
