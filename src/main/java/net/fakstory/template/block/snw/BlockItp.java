@@ -11,16 +11,19 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 import org.apache.logging.log4j.Logger;
-import net.fakstory.template.block.snw.ComTcp;
+import net.fakstory.externalNetwork.TcpClient;
 
 import javax.annotation.Nullable;
+import net.fakstory.externalNetwork.TcpClient;
 
 public class BlockItp extends BlockTileEntity<BlockItpLogic> {
 
 	private static Logger logger;
+	private TcpClient tcpClient;
 
 	public BlockItp() {
 		super(Material.ROCK, "BlockItp");
+		tcpClient = new TcpClient();
 	}
 
 	@Override
@@ -34,6 +37,7 @@ public class BlockItp extends BlockTileEntity<BlockItpLogic> {
 				tile.incrementCount();
 			}
 			player.sendMessage(new TextComponentString("Count: " + tile.getCount()));
+			this.tcpClient.send(Integer.toString(tile.getCount()));
 		}
 		return true;
 	}
@@ -47,10 +51,8 @@ public class BlockItp extends BlockTileEntity<BlockItpLogic> {
 	@Nullable
 	@Override
 	public BlockItpLogic createTileEntity(World world, IBlockState state) {
-		//System.out.println("FROM SERVER: createTileEntity");
-		//logger.info("ItpBlock >> createTileEntity");
+		this.tcpClient.send("Not Created yet!");
 		System.out.println("createTileEntity");
 		return new BlockItpLogic();
 	}
-
 }

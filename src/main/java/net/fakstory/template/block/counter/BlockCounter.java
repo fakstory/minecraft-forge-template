@@ -46,7 +46,7 @@ public class BlockCounter extends BlockTileEntity<TileEntityCounter> {
 	@Override
 	public TileEntityCounter createTileEntity(World world, IBlockState state) {
 
-		//logger.info("CounterBlock >> {createTileEntity}");
+		logger.info("CounterBlock >> {createTileEntity}");
 		return new TileEntityCounter();
 	}
 

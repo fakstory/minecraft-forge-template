@@ -2,7 +2,6 @@ package net.fakstory.template.block.snw;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.fakstory.template.block.snw.ComTcp;
 
 public class BlockItpLogic extends TileEntity {
 
